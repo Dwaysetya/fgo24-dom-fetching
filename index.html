@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=\, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #container {
+        width: 100%;
+        height: auto;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        padding: 50px;
+        gap: 10px;
+        grid-template-columns: repeat(4, 1fr);
+      }
+      #container div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background-color: #eee;
+        padding: 10px;
+        border-radius: 10px;
+      }
+
+      @media screen and (max-width: 375px) {
+        #container {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container"></div>
+    <script>
+      const url = "https://rickandmortyapi.com/api/character";
+
+      const fetchData = async (url) => {
+        try {
+          const res = await fetch(url);
+          const data = await res.json();
+
+          data.results.forEach((person) => {
+            const container = document.getElementById("container");
+
+            const card = document.createElement("div");
+
+            const img = document.createElement("img");
+            img.src = person.image;
+
+            const name = document.createElement("p");
+            name.textContent = person.name;
+
+            card.appendChild(img);
+            card.appendChild(name);
+            container.appendChild(card);
+          });
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      fetchData(url);
+    </script>
+  </body>
+</html>
