@@ -7,6 +7,7 @@ This repository contains projects on how to fetch data from URLs and create clas
 ## Result
 
 ![Result](./src/images/Screenshot%202025-05-08%20at%2016.03.04.png)
+![Result](./src/images/Screenshot%202025-05-12%20at%2018.13.22.png)
 
 ## How to Run this project
 
